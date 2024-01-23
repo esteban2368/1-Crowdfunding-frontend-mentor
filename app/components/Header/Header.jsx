@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import useResponsive from "@/app/hooks/useResponsive";
+import Menu from "../Menu";
 import StyleHeader from './Header.module.css'
 
 import heroDesktop from '../../../public/images/image-hero-desktop.jpg'
@@ -37,7 +38,10 @@ const Header = () => {
                     </nav>
                 )} 
                 {isMobile && (
-                    <p>mobile</p>
+                    <>
+                        <p>mobile</p>
+                        <Menu/>
+                    </>
                 )}
             </div>
         </header>
