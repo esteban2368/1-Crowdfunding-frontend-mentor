@@ -14,7 +14,7 @@ function RootLayout({
 }) {
   return (
     <html lang="en" className={commissioner.variable}>
-      <body>
+      <body className="2xl:container md:mx-auto">
         <Header/>
         <main>{children}</main>
       </body>

@@ -14,46 +14,55 @@ import heroMobile from '../../../public/images/image-hero-mobile.jpg'
 import logo from '../../../public/images/logo.svg'
 
 const Header = () => {
-    const isMobile = useResponsive(375)
+    const isMobile = useResponsive(376)
     const [openModal, setOpenModal] = useState(false)
     return (
-        <header className={`${StyleHeader.header} py-7 px-6`}>
+        <header className={StyleHeader.header}>
             <Image
                 className={StyleHeader.header__background}
                 src={isMobile ? heroMobile : heroDesktop}
                 priority
                 alt=""
             />
-            <div className={StyleHeader.header__menu}>
-                <div>
-                    <Link href="#">
-                        <Image
-                            src={logo}
-                            alt="Crowdfund logo"
-                        />
-                    </Link>
+            <div className={`${StyleHeader.header__menu} py-7 xl:py-12 px-6`}>
+                <div className={StyleHeader.header__menu_container}>
+                    <div>
+                        <Link href="#">
+                            <Image
+                                src={logo}
+                                alt="Crowdfund logo"
+                            />
+                        </Link>
+                    </div>
+                    {!isMobile && (
+                        <nav className={StyleHeader.menu__desktop}>
+                            <ul className={StyleHeader.menu__desktop_list}>
+                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>About</Link></li>
+                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>Discover</Link></li>
+                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>Get started</Link></li>
+                            </ul>
+                        </nav>
+                    )} 
+                    {isMobile && (
+                        <>
+                            <button type='button' onClick={()=> setOpenModal(!openModal)}>
+                                {openModal ? 
+                                    <FontAwesomeIcon icon={faXmark} className='text-white'/>: 
+                                    <FontAwesomeIcon icon={faBars} className='text-white'/>}
+                            </button> 
+                        </>
+                    )}
                 </div>
-                {!isMobile && (
-                    <nav>
-                        <ul>
-                            <li><Link href="#">About</Link></li>
-                            <li><Link href="#">Discover</Link></li>
-                            <li><Link href="#">Get started</Link></li>
-                        </ul>
-                    </nav>
-                )} 
-                {isMobile && (
-                    <>
-                        <button type='button' className="z-30" onClick={()=> setOpenModal(!openModal)}>
-                            {openModal ? 
-                                <FontAwesomeIcon icon={faXmark} className='text-white'/>: 
-                                <FontAwesomeIcon icon={faBars} className='text-white'/>}
-                        </button> 
-                    </>
-                )}
+                <div className={`${StyleHeader.mask}`}></div>
             </div>
-            <Modal isOpen={openModal} buttonClose={false}>
-                <p>Estoy dentro del modal</p>
+            <Modal isOpen={openModal} buttonClose={false} position={'top'}>
+                <nav className={StyleHeader.menu__responsive}>
+                    <ul>
+                        <li className={StyleHeader.menu__item}><Link href="#" className="p-6 block">About</Link></li>
+                        <li className={StyleHeader.menu__item}><Link href="#" className="p-6 block">Discover</Link></li>
+                        <li className={StyleHeader.menu__item}><Link href="#" className="p-6 block">Get started</Link></li>
+                    </ul>
+                </nav>
             </Modal>   
         </header>
     )

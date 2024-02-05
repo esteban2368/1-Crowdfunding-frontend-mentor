@@ -1,6 +1,6 @@
 .header{
     width: 100%;
-    height: 300px;
+    height: 400px;
     position: relative;
 }
 .header__background{
@@ -14,9 +14,48 @@
 }
 .header__menu{
     position: relative;
-    z-index: 10;
+    z-index: 30;
+}
+.header__menu_container{
+    position: relative;
+    max-width: 1140px;
+    margin: auto;
+    z-index: 20;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.menu__desktop{
+    font-weight: 500;
+    font-size: .812rem;
+    color: rgb(var(--color-white));
+}
+.menu__desktop_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+.menu__desktop_item:hover{
+    text-decoration: underline;
+}
+.menu__responsive{
+  font-weight: 500;
+  font-size: 1.125rem;  
+}
+.menu__item{
+    border-bottom: solid 1px rgb(var(--color-light-gray));
+}
+.menu__item:nth-child(3){
+    border-bottom: none
+}
+.mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(var(--foreground-rgb)), rgba(var(--foreground-rgb), .01));
+    z-index: 10;
 }
