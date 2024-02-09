@@ -47,8 +47,8 @@ const Header = () => {
                         <>
                             <button type='button' onClick={()=> setOpenModal(!openModal)}>
                                 {openModal ? 
-                                    <FontAwesomeIcon icon={faXmark} className='text-white'/>: 
-                                    <FontAwesomeIcon icon={faBars} className='text-white'/>}
+                                    <FontAwesomeIcon icon={faXmark} className='text-white text-xl'/>: 
+                                    <FontAwesomeIcon icon={faBars} className='text-white text-xl'/>}
                             </button> 
                         </>
                     )}

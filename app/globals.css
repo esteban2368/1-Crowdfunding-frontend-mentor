@@ -6,14 +6,50 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background-page: 250, 250, 250;
   --color-light-gray: 234, 234, 234;
+  --color-dark-gray: 47, 47, 47;
   --color-white: 255, 255, 255;
+  --color-text: 122, 122, 122;
+  --color-green: 60, 179, 171;
+  --color-dark-green: 20, 122, 115
 }
 
 body{
   font-family: var(--font-main);
+  font-size: .87rem;
+  line-height: 1.5;
+  background-color: rgb(var(--background-page));
+}
+
+/*Main titles*/
+h1, h2, h3, h4, h5, h6{
+  margin-bottom: 1rem;
   font-weight: 700;
-  font-size: 28px;
+}
+h1{
+  font-size: 2rem;
+  text-align: center;
+}
+h2{
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.2;
+}
+h3{
+  font-size: 1.125rem;
+}
+h4{
+  font-size: 1rem;
+}
+h5{
+  font-size: .875rem;
+}
+
+/*text*/
+p{
+  color: rgb(var(--color-text));
+
 }
 
 .center{

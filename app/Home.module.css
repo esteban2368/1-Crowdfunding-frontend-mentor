@@ -1,0 +1,19 @@
+.main{
+    position: relative;
+    max-width: 730px;
+}
+.mainCard{
+    background-color: rgb(var( --color-white));
+    border: solid 1px rgba(var(--foreground-rgb), .05); 
+    border-radius: 8px;
+    
+}
+.mainCard-level2{
+    border: solid 1px rgba(var(--foreground-rgb), .15); 
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    top: -28px;
+    transform: translate(-50%,0);
+}
