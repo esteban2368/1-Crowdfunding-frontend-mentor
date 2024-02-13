@@ -1,6 +1,10 @@
 .main{
     position: relative;
     max-width: 730px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 .mainCard{
     background-color: rgb(var( --color-white));
@@ -16,4 +20,17 @@
     left: 50%;
     top: -28px;
     transform: translate(-50%,0);
+}
+.hr{
+    width: 100%;
+    max-width: 80px;
+    height: 1px;
+    background-color: rgba(var(--foreground-rgb), .15);
+}
+
+/*Breakpoints*/
+@media (min-width:376px) {
+    .hr{
+        max-width: 63px;
+    }
 }

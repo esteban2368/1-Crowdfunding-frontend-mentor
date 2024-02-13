@@ -1,0 +1,59 @@
+.button{
+    font-weight: 700;
+    color: rgb(var(--color-text));
+    font-size: 1rem;
+    background-color: rgba(var(--color-dark-gray), .05);
+    border-radius: 33.5px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+.button:hover .icon{
+    background-color: rgb(var(--color-gray));
+
+}
+.icon{
+    width: 56px;
+    height: 56px;
+    background-color: rgb(var(--color-dark-gray));
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vector{
+    color: rgb(var(--color-super-light-gray));
+    width: 10px;
+}
+.text{
+    display: none;
+}
+
+/*Status Bookmarked*/
+.bookmarked{
+    background-color: rgba(var(--color-dark-green), .05);
+    color: rgb(var(--color-dark-green));
+}
+.bookmarked .vector{
+    color: rgb(var(--color-white));
+}
+.bookmarked:hover .icon{
+    background-color: rgb(var(--color-dark-green));
+}
+.bookmarked .icon{
+    background-color: rgb(var(--color-dark-green));
+}
+
+/*Breakpoints*/
+@media (min-width:376px) {
+    .button{
+        min-width: 174px;
+        height: 56px;
+    }
+    .text{
+        display: block;
+    }
+}

@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from "react"
 
 const useResponsive = (sizeScreen) =>{
-    const [isMobile, setIsMobile] = useState(!window.matchMedia(`(min-width: ${sizeScreen}px)`).matches)
+    const [isMobile, setIsMobile] = useState(false)
 
     const handleScreenSize = useCallback(e =>{
         setIsMobile(!e.matches)
@@ -16,7 +16,7 @@ const useResponsive = (sizeScreen) =>{
         return () => {
             screen.removeEventListener("change", handleScreenSize)
         }
-    },[sizeScreen])
+    },[isMobile])
 
     return isMobile
 }
