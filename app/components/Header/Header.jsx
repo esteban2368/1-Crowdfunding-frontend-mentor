@@ -19,9 +19,13 @@ const Header = () => {
     return (
         <header className={StyleHeader.header}>
             <Image
-                className={StyleHeader.header__background}
-                src={isMobile ? heroMobile : heroDesktop}
-                priority
+                className={`${StyleHeader.header__background} block md:hidden`}
+                src={heroMobile}
+                alt=""
+            />
+            <Image
+                className={`${StyleHeader.header__background} none md:block`}
+                src={heroDesktop}
                 alt=""
             />
             <div className={`${StyleHeader.header__menu} py-7 xl:py-12 px-6`}>
@@ -34,24 +38,20 @@ const Header = () => {
                             />
                         </Link>
                     </div>
-                    {!isMobile && (
-                        <nav className={StyleHeader.menu__desktop}>
-                            <ul className={StyleHeader.menu__desktop_list}>
-                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>About</Link></li>
-                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>Discover</Link></li>
-                                <li><Link href="#" className={StyleHeader.menu__desktop_item}>Get started</Link></li>
-                            </ul>
-                        </nav>
-                    )} 
-                    {isMobile && (
-                        <>
-                            <button type='button' onClick={()=> setOpenModal(!openModal)}>
-                                {openModal ? 
-                                    <FontAwesomeIcon icon={faXmark} className='text-white text-xl'/>: 
-                                    <FontAwesomeIcon icon={faBars} className='text-white text-xl'/>}
-                            </button> 
-                        </>
-                    )}
+                    <nav className={`${StyleHeader.menu__desktop} hidden sm:block`}>
+                        <ul className={StyleHeader.menu__desktop_list}>
+                            <li><Link href="#" className={StyleHeader.menu__desktop_item}>About</Link></li>
+                            <li><Link href="#" className={StyleHeader.menu__desktop_item}>Discover</Link></li>
+                            <li><Link href="#" className={StyleHeader.menu__desktop_item}>Get started</Link></li>
+                        </ul>
+                    </nav>
+                    <>
+                        <button type='button' onClick={()=> setOpenModal(!openModal)} className="block sm:hidden">
+                            {openModal ? 
+                                <FontAwesomeIcon icon={faXmark} className='text-white text-xl'/>: 
+                                <FontAwesomeIcon icon={faBars} className='text-white text-xl'/>}
+                        </button> 
+                    </>
                 </div>
                 <div className={`${StyleHeader.mask}`}></div>
             </div>

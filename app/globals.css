@@ -16,6 +16,9 @@
   --color-green: 60, 179, 171;
   --color-dark-green: 20, 122, 115
 }
+html{
+  font-size: 16px;
+}
 
 body{
   font-family: var(--font-main);
@@ -34,24 +37,32 @@ h1{
   text-align: center;
 }
 h2{
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   text-align: center;
   line-height: 1.2;
 }
 h3{
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 h4{
-  font-size: 1rem;
+  font-size: 1.125rem;
 }
 h5{
-  font-size: .875rem;
+  font-size: 1rem;
 }
 
 /*text*/
 p{
   color: rgb(var(--color-text));
+  line-height: 1.875;
+  margin-bottom: 1.5rem;
 
+}
+.display-1{
+  font-size: 1.25rem;
+}
+.display-2{
+  
 }
 
 .center{
@@ -63,6 +74,12 @@ p{
   margin-top: 6rem;
 }
 
+/*Breakpoints*/
+@media (min-width:376px) {
+  html{
+    font-size: 16px;
+  }
+}
 
 
 
