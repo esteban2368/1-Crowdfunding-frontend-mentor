@@ -1,4 +1,7 @@
+'use client'
+import { useState } from 'react'
 import Image from 'next/image'
+import Modal from './components/common/Modal'
 import Button from './components/common/Button'
 import Bookmark from './components/Bookmark'
 import Count from './components/Count'
@@ -9,6 +12,11 @@ import styleHome from './Home.module.css'
 import logo from '../public/images/logo-mastercraft.svg'
 
 export default function Home() {
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleClickButtonModal = () => setOpenModal(!openModal)
+  const handleClickCloseModal = () => setOpenModal(false)
+
   return (
     <main className={`${styleHome.main} mx-6 -mt-14 md:mx-auto z-10`}>
       <div className={`${styleHome.mainCard} relative px-6 md:px-12 pb-10 md:pb-12 pt-14`}>
@@ -21,7 +29,7 @@ export default function Home() {
         <h2>Mastercraft Bamboo Monitor Riser</h2>
         <p className='text-center'>A beautifully handcrafted monitor stand to reduce neck and eye strain.</p>
         <div className='flex items-center justify-between gap-2 pt-6'>
-          <Button>Back this project</Button>
+          <Button onCLick={handleClickButtonModal}>Back this project</Button>
           <Bookmark>Bookmark</Bookmark>
         </div>
       </div>
@@ -41,12 +49,19 @@ export default function Home() {
         </div>
         <ProgressBar max={100} value={50}/>
       </div>
-      <div className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
+      <section className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
         <h3>About this project</h3>
         <p>The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p>
         <p>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
-        <CardReward/>
-      </div>
+        <article className="flex flex-col gap-6">
+          <CardReward/>
+          <CardReward/>
+          <CardReward variant="inactive"/>
+        </article>
+      </section>
+      <Modal isOpen={openModal} title={'Back this proyect'} Onclose={handleClickCloseModal}>
+          
+      </Modal>
     </main>
   )
 }

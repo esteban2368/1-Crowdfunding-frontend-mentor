@@ -54,6 +54,9 @@
     font-size: 2rem;
     font-weight: 700;
 }
+.inactive{
+    opacity: .5;
+}
 /*Breakpoints*/
 @media (min-width:376px) {
     .hr{

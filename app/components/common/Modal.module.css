@@ -1,5 +1,5 @@
 .modal__overlay{
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
@@ -10,9 +10,28 @@
 .modal__content{
     width: 100%;
     max-width: 327px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgb(var( --background-end-rgb));
     border: solid 1px rgba(var(--foreground-rgb), .04);
     border-radius: 8px;
     z-index: 30;
+}
+.buttonClose{
+    color: rgba(var(--foreground-rgb), .4);
+    font-size: 1.45rem;
+}
+.title{
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Breakpoints*/
+@media (min-width:376px) {
+    .modal__content{
+        max-width: 730px;
+    } 
 }

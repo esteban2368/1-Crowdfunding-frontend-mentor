@@ -14,6 +14,6 @@
 
 }
 .inactive{
-    background-color: rgb(var(--color-dark-gray));
+    background-color: rgba(var(--color-dark-gray),.5);
     cursor:default
 }

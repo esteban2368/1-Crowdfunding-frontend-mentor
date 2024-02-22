@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import useResponsive from "@/app/hooks/useResponsive";
 import Modal from "../common/Modal";
 import StyleHeader from './Header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,7 +13,6 @@ import heroMobile from '../../../public/images/image-hero-mobile.jpg'
 import logo from '../../../public/images/logo.svg'
 
 const Header = () => {
-    const isMobile = useResponsive(376)
     const [openModal, setOpenModal] = useState(false)
     return (
         <header className={StyleHeader.header}>
@@ -55,7 +53,7 @@ const Header = () => {
                 </div>
                 <div className={`${StyleHeader.mask}`}></div>
             </div>
-            <Modal isOpen={openModal} buttonClose={false} position={'top'}>
+            <Modal isOpen={openModal} getTitle={false} position={'top'}>
                 <nav className={StyleHeader.menu__responsive}>
                     <ul>
                         <li className={StyleHeader.menu__item}><Link href="#" className="p-6 block">About</Link></li>

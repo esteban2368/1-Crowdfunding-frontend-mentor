@@ -17,12 +17,12 @@
   --color-dark-green: 20, 122, 115
 }
 html{
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body{
   font-family: var(--font-main);
-  font-size: .87rem;
+  font-size: 1rem;
   line-height: 1.5;
   background-color: rgb(var(--background-page));
 }
@@ -60,9 +60,6 @@ p{
 }
 .display-1{
   font-size: 1.25rem;
-}
-.display-2{
-  
 }
 
 .center{
