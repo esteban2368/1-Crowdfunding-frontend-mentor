@@ -7,6 +7,7 @@ import Bookmark from './components/Bookmark'
 import Count from './components/Count'
 import ProgressBar from './components/ProgressBar'
 import CardReward from './components/CardReward'
+import CardRewardRadio from './components/CardRewardRadio'
 
 import styleHome from './Home.module.css'
 import logo from '../public/images/logo-mastercraft.svg'
@@ -60,7 +61,8 @@ export default function Home() {
         </article>
       </section>
       <Modal isOpen={openModal} title={'Back this proyect'} Onclose={handleClickCloseModal}>
-          
+          <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? </p>
+          <CardRewardRadio/>
       </Modal>
     </main>
   )
