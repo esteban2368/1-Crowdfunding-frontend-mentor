@@ -19,7 +19,7 @@ export default function Home() {
   const handleClickCloseModal = () => setOpenModal(false)
 
   return (
-    <main className={`${styleHome.main} mx-6 -mt-14 md:mx-auto z-10`}>
+    <main className={`${styleHome.main} mx-6 -mt-14 md:mx-auto z-40 sm:z-[60]`}>
       <div className={`${styleHome.mainCard} relative px-6 md:px-12 pb-10 md:pb-12 pt-14`}>
         <Image
           src={logo}

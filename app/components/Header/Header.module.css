@@ -14,17 +14,18 @@
 }
 .header__menu{
     position: relative;
-    z-index: 30;
+    z-index: 60;
 }
 .header__menu_container{
     position: relative;
     max-width: 1140px;
     margin: auto;
-    z-index: 20;
+    z-index: 15;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .menu__desktop{
     font-weight: 500;
@@ -57,7 +58,6 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(rgb(var(--foreground-rgb)), rgba(var(--foreground-rgb), .01));
-    z-index: 10;
 }
 
 /*Breakpoints*/

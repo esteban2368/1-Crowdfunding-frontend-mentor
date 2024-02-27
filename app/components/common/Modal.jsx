@@ -2,9 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import styleModal from "./Modal.module.css"
 
-const Modal = ({isOpen, Onclose, getTitle = true, title = 'Title modal', position = 'center' , children}) =>{
+const Modal = ({
+    isOpen, 
+    Onclose, 
+    getTitle = true, 
+    title = 'Title modal',
+    position = 'center',
+    children
+    }) =>{
     if(!isOpen) return
-
     return (
         <div className={`${styleModal.modal__overlay} ${position}`}>
             <div className={`${styleModal.modal__content} px-6 py-8 sm:p-12`}>

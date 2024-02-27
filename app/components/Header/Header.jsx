@@ -53,7 +53,7 @@ const Header = () => {
                 </div>
                 <div className={`${StyleHeader.mask}`}></div>
             </div>
-            <Modal isOpen={openModal} getTitle={false} position={'top'}>
+            <Modal isOpen={openModal} getTitle={false} isMenu position={'top'}>
                 <nav className={StyleHeader.menu__responsive}>
                     <ul>
                         <li className={StyleHeader.menu__item}><Link href="#" className="p-6 block">About</Link></li>
