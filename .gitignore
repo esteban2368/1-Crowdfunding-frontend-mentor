@@ -1,3 +1,4 @@
 # Dependencies directories
 node_modules
 .next/
+.env

@@ -25,12 +25,12 @@ const CardRewardRadio = ({variant = 'active'}) =>{
                         <p className='m-0'>left</p>
                     </div>
                 </div>
-                <div className={`${style.pledge} p-6 sm:p-8`}>
-                    <p className="text-center">Enter your pledge</p>
+                <div className={`${style.pledge} sm:flex justify-between items-center gap-4 p-6 sm:p-8`}>
+                    <p className="text-center sm:m-0 shrink-0">Enter your pledge</p>
                     <div className="flex items-center gap-4">
                         <div className={`${style.pledgeInput} py-4 px-6`}>
                             <span>$</span>
-                            <input type='number' value={25}/>
+                            <input type='text'/>
                         </div>
                         <Button>Continue</Button>
                     </div>

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Modal from './components/common/Modal'
 import Button from './components/common/Button'
@@ -8,16 +8,41 @@ import Count from './components/Count'
 import ProgressBar from './components/ProgressBar'
 import CardReward from './components/CardReward'
 import CardRewardRadio from './components/CardRewardRadio'
+import Skeleton from './components/common/Skeleton'
 
 import styleHome from './Home.module.css'
 import logo from '../public/images/logo-mastercraft.svg'
 
+import {getData} from './utils/api'
+
 export default function Home() {
   const [openModal, setOpenModal] = useState(false)
+  const [dataPledges, setDataPledges] = useState(null)
 
   const handleClickButtonModal = () => setOpenModal(!openModal)
   const handleClickCloseModal = () => setOpenModal(false)
 
+  useEffect(()=>{
+    const body = document.body
+    if(openModal){
+      body.classList.add("overflow-hidden") 
+    }else{
+      body.classList.remove("overflow-hidden")
+    }
+    return () =>{
+      body.classList.remove("overflow-hidden")
+    }
+  },[openModal])
+
+  useEffect(()=>{
+    const result = async () =>{
+      const pledges = await getData('pledge')
+      console.log(pledges)
+      setDataPledges(pledges)
+    }
+    result()
+  },[])
+  
   return (
     <main className={`${styleHome.main} mx-6 -mt-14 md:mx-auto z-40 sm:z-[60]`}>
       <div className={`${styleHome.mainCard} relative px-6 md:px-12 pb-10 md:pb-12 pt-14`}>
@@ -55,14 +80,29 @@ export default function Home() {
         <p>The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p>
         <p>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
         <article className="flex flex-col gap-6">
-          <CardReward/>
-          <CardReward/>
-          <CardReward variant="inactive"/>
+          {dataPledges ? (
+              dataPledges.map((pledge, index)=> 
+                <CardReward data={pledge}/>
+              )
+            ):(
+              <div className='flex flex-col px-6 p-6 sm:p-8 gap-3 '>
+                <Skeleton width='100%' height='40px'/>
+                <Skeleton width='100%' height='100px'/>
+                <div className='flex'>
+                  <div className='grow'></div>
+                  <Skeleton width='200px' height='60px'/>  
+                </div>
+              </div>
+            )
+          }
         </article>
       </section>
       <Modal isOpen={openModal} title={'Back this proyect'} Onclose={handleClickCloseModal}>
           <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? </p>
-          <CardRewardRadio/>
+          <div className={`${styleHome.containerCardReward} flex flex-col gap-6`}>
+            <CardRewardRadio/>
+            <CardRewardRadio/>
+          </div>
       </Modal>
     </main>
   )

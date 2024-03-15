@@ -67,10 +67,27 @@ p{
   align-items: center;
   justify-content: center;
 }
+.center > div{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .top > *{
   margin-top: 6rem;
 }
 
+/*Style custom scrollbar*/
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(var( --foreground-rgb), .30);
+  border-radius: 8px;
+
+}
+::-webkit-scrollbar-track{
+  background-color: rgba(var( --foreground-rgb), .15);
+  margin-left: 3px;
+}
 /*Breakpoints*/
 @media (min-width:376px) {
   html{

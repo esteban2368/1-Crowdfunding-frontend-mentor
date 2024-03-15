@@ -1,0 +1,17 @@
+.container{
+    background-color: rgb(var(--color-gray));
+    border-radius: .5rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: .6;
+    }
+    50% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .6;
+    }
+}
