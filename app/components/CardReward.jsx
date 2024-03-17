@@ -1,3 +1,5 @@
+'use client'
+import formartCurrency from '../utils/currencyFormatter'
 import style from '../Home.module.css'
 import Button from './common/Button'
 const CardReward = ({data}) =>{
@@ -5,12 +7,7 @@ const CardReward = ({data}) =>{
     const variant = left !== 0 ? 'active' : 'inactive'
     const variantClassName = style[variant]
 
-    const USformatPledge = new Intl.NumberFormat('en-US',{
-          style: 'currency',
-          currency: 'USD',
-          maximumSignificantDigits: 2
-    }).format(min_pledge)
-
+    const USformatPledge = formartCurrency(min_pledge)
     return(
         <div className={`${style.mainCardLevel2} ${variantClassName} p-6 sm:p-8`}>
             <hgroup className='sm:flex justify-between justify-items-center mb-8'>

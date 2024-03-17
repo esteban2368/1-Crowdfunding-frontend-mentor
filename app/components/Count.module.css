@@ -1,3 +1,9 @@
 .container{
     text-align: center;
 }
+.hr{
+    width: 100%;
+    max-width: 65px;
+    height: 1px;
+    background-color: rgba(var(--foreground-rgb), .15);
+}

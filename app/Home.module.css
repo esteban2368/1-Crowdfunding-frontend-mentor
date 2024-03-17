@@ -25,12 +25,6 @@
     top: -28px;
     transform: translate(-50%,0);
 }
-.hr{
-    width: 100%;
-    max-width: 80px;
-    height: 1px;
-    background-color: rgba(var(--foreground-rgb), .15);
-}
 
 /*Progress bar component*/
 .containerProgress{
@@ -43,7 +37,6 @@
 .progressBar{
     position: absolute;
     left: 0;
-    width: 50%;
     height: 12px;
     border-radius: 33.5px;
     background-color: rgb(var(--color-green));

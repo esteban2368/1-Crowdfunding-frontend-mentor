@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePledgeContext } from './contexts/PledgeProvider'
 import Image from 'next/image'
 import Modal from './components/common/Modal'
 import Button from './components/common/Button'
@@ -16,6 +17,9 @@ import logo from '../public/images/logo-mastercraft.svg'
 import {getData} from './utils/api'
 
 export default function Home() {
+  const {goals} = usePledgeContext()
+  const percentbacked = goals[0]['number']
+
   const [openModal, setOpenModal] = useState(false)
   const [dataPledges, setDataPledges] = useState(null)
 
@@ -60,20 +64,10 @@ export default function Home() {
         </div>
       </div>
       <div className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
-        <div className='md:flex justify-start'>
-          <Count>
-          <p className='text-center md:text-left leading-normal'>of $100,000 backed</p>
-          </Count>
-          <div className={`${styleHome.hr} my-6 md:my-11 mx-auto md:mx-6 md:rotate-90`}></div>
-          <Count>
-            <p className='text-center md:text-left leading-normal'>total backers</p>
-          </Count>
-          <div className={`${styleHome.hr} my-6 md:my-11 mx-auto md:mx-6 md:rotate-90`}></div>
-          <Count>
-            <p className='text-center md:text-left leading-normal mb-8'>days left</p>
-          </Count>
+        <div className='md:flex justify-start md:mb-5'>
+          <Count/>
         </div>
-        <ProgressBar max={100} value={50}/>
+        <ProgressBar max={100000} value={percentbacked}/>
       </div>
       <section className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
         <h3>About this project</h3>
