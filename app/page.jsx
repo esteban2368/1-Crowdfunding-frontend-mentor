@@ -17,11 +17,12 @@ import logo from '../public/images/logo-mastercraft.svg'
 import {getData} from './utils/api'
 
 export default function Home() {
-  const {goals} = usePledgeContext()
-  const percentbacked = goals[0]['number']
+  const {backed, backers} = usePledgeContext()
 
   const [openModal, setOpenModal] = useState(false)
+
   const [dataPledges, setDataPledges] = useState(null)
+  const [dataGoal, setDataGoal] = useState(null)
 
   const handleClickButtonModal = () => setOpenModal(!openModal)
   const handleClickCloseModal = () => setOpenModal(false)
@@ -46,6 +47,15 @@ export default function Home() {
     }
     result()
   },[])
+
+  useEffect(()=>{
+    const result = async () =>{
+      const goals = await getData('goal')
+      console.log(goals)
+      setDataGoal(goals)
+    }
+    result()
+  },[])
   
   return (
     <main className={`${styleHome.main} mx-6 -mt-14 md:mx-auto z-40 sm:z-[60]`}>
@@ -65,9 +75,17 @@ export default function Home() {
       </div>
       <div className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
         <div className='md:flex justify-start md:mb-5'>
-          <Count/>
+        {dataGoal ? (
+            <Count data={dataGoal}/>
+          ):(
+            <div className='flex gap-3 w-full'>
+                <Skeleton width='30%' height='90px'/>
+                <Skeleton width='30%' height='90px'/>
+                <Skeleton width='30%' height='90px'/>
+            </div>
+        )}
         </div>
-        <ProgressBar max={100000} value={percentbacked}/>
+        <ProgressBar max={100000} value={backed}/>
       </div>
       <section className={`${styleHome.mainCard} px-6 md:px-12 py-8`}>
         <h3>About this project</h3>
@@ -76,7 +94,7 @@ export default function Home() {
         <article className="flex flex-col gap-6">
           {dataPledges ? (
               dataPledges.map((pledge, index)=> 
-                <CardReward data={pledge}/>
+                <CardReward data={pledge} />
               )
             ):(
               <div className='flex flex-col px-6 p-6 sm:p-8 gap-3 '>

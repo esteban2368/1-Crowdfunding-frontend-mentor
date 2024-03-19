@@ -33,7 +33,10 @@
 
 /*Breakpoints*/
 @media (min-width:376px) {
-    .modal__content{
+    .modal__content.md{
         max-width: 730px;
-    } 
+    }
+    .modal__content.sm{
+        max-width: 540px;
+    }
 }

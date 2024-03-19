@@ -60,6 +60,16 @@
 .inactive{
     opacity: .5;
 }
+.titleModal{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.imageModal{
+    width: 64px;
+    height: 64px;
+}
 /*CardRewardRadio component*/
 .radio{
     position: relative;
@@ -123,5 +133,9 @@
 @media (min-width:376px) {
     .hr{
         max-width: 63px;
+    }
+    .imageModal{
+        width: 90px;
+        height: 90px;
     }
 }
