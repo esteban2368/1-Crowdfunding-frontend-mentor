@@ -37,10 +37,10 @@ const CardReward = ({data, state}) =>{
                     <p className='m-0'>left</p>
                 </div>
                 {variant == 'active' && 
-                    <Button variant='active' onCLick={handleClick}>Select Reward</Button>
+                    <Button onCLick={handleClick}>Select Reward</Button>
                 }
                 {variant == 'inactive' &&
-                    <Button variant='inactive'>Out of stock</Button>
+                    <Button inactive={true}>Out of stock</Button>
                 }
             </div>
             <Modal isOpen={openModal} getTitle={false} size='sm' title={'Thanks for your support!'} Onclose={handleClickCloseModal}>

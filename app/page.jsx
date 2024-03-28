@@ -109,11 +109,10 @@ export default function Home() {
           }
         </article>
       </section>
-      <Modal isOpen={openModal} title={'Back this proyect'} Onclose={handleClickCloseModal}>
+      <Modal isOpen={openModal} data={dataPledges} title={'Back this proyect'} Onclose={handleClickCloseModal}>
           <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? </p>
-          <div className={`${styleHome.containerCardReward} flex flex-col gap-6`}>
-            <CardRewardRadio/>
-            <CardRewardRadio/>
+          <div className={`${styleHome.containerCardReward}`}>
+            <CardRewardRadio data={dataPledges}/>
           </div>
       </Modal>
     </main>
