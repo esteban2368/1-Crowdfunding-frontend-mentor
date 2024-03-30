@@ -15,8 +15,15 @@ const PledgeProvider = ({children}) =>{
         return newPledges
       })
     }
+    const countBackers = () =>{
+      setBackers(prevState =>{
+        let newBackers = prevState;
+        newBackers += 1
+        return newBackers
+      })
+    }
     return (
-        <pledgeContext.Provider value={{backed, backers, leftDays, countPledge}}>
+        <pledgeContext.Provider value={{backed, backers, leftDays, countPledge, countBackers}}>
             {children}
         </pledgeContext.Provider>
     )

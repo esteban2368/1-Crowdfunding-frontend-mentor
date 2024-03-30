@@ -10,7 +10,7 @@ import formartCurrency from '../utils/currencyFormatter'
 import { usePledgeContext } from '../contexts/PledgeProvider'
 
 const CardReward = ({data, state}) =>{
-    let {goals, countPledge} = usePledgeContext()
+    let {countPledge, countBackers} = usePledgeContext()
     const [openModal, setOpenModal] = useState(false)
     const handleClickCloseModal = () => setOpenModal(false)
 
@@ -20,6 +20,7 @@ const CardReward = ({data, state}) =>{
 
     const handleClick = () =>{
         countPledge(min_pledge)
+        countBackers()
         setOpenModal(!openModal)
     }
 

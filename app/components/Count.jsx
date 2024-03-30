@@ -9,10 +9,10 @@ const Count = ({data}) => {
         let value
         switch (index) {
             case 0: 
-                value = backed == 0 ? number : backed
+                value = backed == 0 ? formartCurrency(number) : formartCurrency(backed)
                 break
             case 1:
-                value = backers == 0 ? number : backers
+                value = backers == 0 ? number : formartCurrency(backers, 0, 'decimal')
                 break
             case 2:
                 value = leftDays
@@ -28,7 +28,7 @@ const Count = ({data}) => {
             {data.map((goal, index)=> (
                     <>
                         <div className='text-center md:text-left mb-6 md:mb-0'>
-                            <span className='text-3xl font-bold'>{data.length - 1 !== index ? formartCurrency(showData(index, goal.number)): showData(index, goal.number)}</span>
+                            <span className='text-3xl font-bold'>{showData(index, goal.number)}</span>
                             <p className='text-center m-0 md:text-left leading-normal'>{goal.label}</p>
                         </div>
                         {data.length - 1 !== index ? 

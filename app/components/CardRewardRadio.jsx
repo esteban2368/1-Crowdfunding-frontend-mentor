@@ -1,15 +1,19 @@
 import style from '../Home.module.css'
 import Image from 'next/image'
-import imageCheck from '../../public/images/icon-check.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import Button from './common/Button'
 import Skeleton from './common/Skeleton'
+import Modal from './common/Modal'
 import formartCurrency from '../utils/currencyFormatter'
 import validateElement from '../utils/textElement'
-import { useState } from 'react'
-const CardRewardRadio = ({data}) =>{
+import { useEffect, useState } from 'react'
+
+import { usePledgeContext } from '../contexts/PledgeProvider'
+const CardRewardRadio = ({data, Onclose, isOpenModalSuccess}) =>{
+    let {countPledge, countBackers} = usePledgeContext()
     const [select, setSelect] = useState(null)
     const [answer, setAnswer] = useState('')
-    const [error, setError] = useState(null)
     const [status, setStatus] = useState('typing')
 
     const handleOnchange = (e) =>{
@@ -24,24 +28,14 @@ const CardRewardRadio = ({data}) =>{
         setStatus('success')
     }
 
-    if(status === 'success') {
-        return(
-            <>
-                <div className='flex flex-col items-center'>
-                    <Image
-                        src={imageCheck}
-                        alt='Check'
-                        className={`${style.imageModal} mb-6`}
-                    />
-                    <span className={style.titleModal}>Thanks for your support!</span>
-                    <p className='text-center'>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
-                    <div className='flex justify-center'>
-                        <Button>Got it!</Button>
-                    </div>
-                </div>
-            </>
-        )
-    } 
+    useEffect(()=>{
+        if(status === 'success') {
+            countPledge(Number(answer))
+            countBackers()
+            Onclose()
+            isOpenModalSuccess(true)
+        } 
+    },[status])
     return(
         <form className='flex flex-col gap-6' onSubmit={handleOnSubmit}>  
             {data ? (
@@ -70,12 +64,18 @@ const CardRewardRadio = ({data}) =>{
                         {select == pledge.min_pledge &&
                             <div className={`${style.pledge} sm:flex justify-between items-center gap-4 p-6 sm:p-8`}>
                                 <p className="text-center sm:m-0 shrink-0">Enter your pledge</p>
-                                <div className="flex items-center gap-4">
-                                    <div className={`${style.pledgeInput} py-4 px-6`}>
-                                        <span>$</span>
-                                        <input type='text' onChange={handleInputPledgeOnchange} disabled={status === 'submtting'}/>
+                                <div className="flex flex-col gap-2">
+                                    <div className='flex items-center gap-4'>
+                                        <div className={`${style.pledgeInput} py-4 px-6`}>
+                                            <span>$</span>
+                                            <input type='text' onChange={handleInputPledgeOnchange} disabled={status === 'submtting'}/>
+                                        </div>
+                                        <Button type='submit' inactive={answer.length === 0 || !validateElement(answer, '^\\d+$') || answer < pledge.min_pledge }>Continue</Button>
                                     </div>
-                                    <Button type='submit' inactive={answer.length === 0 || !validateElement(answer, '^\\d+$')}>Continue</Button>
+                                    <div className={style.alertInfo}>
+                                        <FontAwesomeIcon icon={faCircleInfo}/>
+                                        <span className='ml-2'>Min pledge {formartCurrency(pledge.min_pledge)}</span>
+                                    </div>
                                 </div>
                             </div>
                         }

@@ -13,6 +13,7 @@ import Skeleton from './components/common/Skeleton'
 
 import styleHome from './Home.module.css'
 import logo from '../public/images/logo-mastercraft.svg'
+import imageCheck from '../public/images/icon-check.svg'
 
 import {getData} from './utils/api'
 
@@ -20,12 +21,14 @@ export default function Home() {
   const {backed, backers} = usePledgeContext()
 
   const [openModal, setOpenModal] = useState(false)
+  const [openModalSuccess, setOpenModalSuccess] = useState(false)
 
   const [dataPledges, setDataPledges] = useState(null)
   const [dataGoal, setDataGoal] = useState(null)
 
   const handleClickButtonModal = () => setOpenModal(!openModal)
   const handleClickCloseModal = () => setOpenModal(false)
+  const handleClickCloseModalSuccess = () => setOpenModalSuccess(false)
 
   useEffect(()=>{
     const body = document.body
@@ -42,7 +45,6 @@ export default function Home() {
   useEffect(()=>{
     const result = async () =>{
       const pledges = await getData('pledge')
-      console.log(pledges)
       setDataPledges(pledges)
     }
     result()
@@ -51,7 +53,6 @@ export default function Home() {
   useEffect(()=>{
     const result = async () =>{
       const goals = await getData('goal')
-      console.log(goals)
       setDataGoal(goals)
     }
     result()
@@ -112,9 +113,23 @@ export default function Home() {
       <Modal isOpen={openModal} data={dataPledges} title={'Back this proyect'} Onclose={handleClickCloseModal}>
           <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? </p>
           <div className={`${styleHome.containerCardReward}`}>
-            <CardRewardRadio data={dataPledges}/>
+            <CardRewardRadio data={dataPledges} Onclose={handleClickCloseModal} isOpenModalSuccess={setOpenModalSuccess}/>
           </div>
       </Modal>
+      <Modal isOpen={openModalSuccess} getTitle={false} size='sm' title={'Thanks for your support!'} Onclose={handleClickCloseModalSuccess}>
+                <div className='flex flex-col items-center'>
+                    <Image
+                        src={imageCheck}
+                        alt='Check'
+                        className={`${styleHome.imageModal} mb-6`}
+                    />
+                    <span className={styleHome.titleModal}>Thanks for your support!</span>
+                    <p className='text-center'>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
+                    <div className='flex justify-center'>
+                        <Button onCLick={handleClickCloseModalSuccess}>Got it!</Button>
+                    </div>
+                </div>
+            </Modal>
     </main>
   )
 }
