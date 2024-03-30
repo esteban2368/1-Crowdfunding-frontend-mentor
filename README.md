@@ -50,6 +50,7 @@ Users should be able to:
 - [NextJS](https://nextjs.org/) - React framework 
 - [ReactJS](https://react.dev/) - Library javascript for web user interfaces
 - [FontAawesome](https://fontawesome.com/) - Font icons
+- [Tailwind](https://tailwindui.com/) - Framework CSS
 
 ### What I learned
 
