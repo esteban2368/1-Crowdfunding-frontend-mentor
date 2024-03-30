@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Advice generator app
 
-## Getting Started
+This is a solution to the [Crowdfunding product page on Frontend Mentor](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR/hub). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
+
+**Note: Delete this note and update the table of contents based on what sections you keep.**
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- Make a selection of which pledge to make
+- See an updated progress bar and total money raised based on their pledge total after confirming a pledge
+- See the number of total backers increment by one after confirming a pledge
+- Toggle whether or not the product is bookmarked
+- View the optimal layout depending on their device's screen size
+- See hover states for interactive elements
+
+### Screenshot
+
+![](./screenshot.png)
+
+### Links
+
+- Solution URL: [solution URL Frontenmentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db/hub/sass-css-flexbox-parcel-mobile-first-async-functions-HyUda_185)
+- Live Site URL: [Advice generator app by Esteban Diaz](https://admirable-marzipan-9e2f01.netlify.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Modules CSS
+- Flexbox
+- [NextJS](https://nextjs.org/) - React framework 
+- [ReactJS](https://react.dev/) - Library javascript for web user interfaces
+- [FontAawesome](https://fontawesome.com/) - Font icons
+
+### What I learned
+
+I learned how to use the different hooks available in React, such as useState and useContext. An example of this was the need to use a global state to update total money raised and the number of backers:
+
+
+```js
+    const pledgeContext = createContext(null)
+    export const usePledgeContext = () => useContext(pledgeContext)
+
+    const PledgeProvider = ({children}) =>{
+        const [backed, setBacked] = useState(0)
+        const [backers, setBackers] = useState(0)
+        const [leftDays, setLeftDays] = useState(101)
+        const countPledge = (value) =>{
+        setBacked(prevState =>{
+            let newPledges = prevState;
+            newPledges += value
+            return newPledges
+        })
+        }
+        const countBackers = () =>{
+        setBackers(prevState =>{
+            let newBackers = prevState;
+            newBackers += 1
+            return newBackers
+        })
+        }
+        return (
+            <pledgeContext.Provider value={{backed, backers, leftDays, countPledge, countBackers}}>
+                {children}
+            </pledgeContext.Provider>
+        )
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Continued development
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This is one of my first projects using Next.js, and I would like to continue developing and acquiring more skills using this framework.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Author
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Frontend Mentor - [@esteban2368](https://www.frontendmentor.io/profile/esteban2368)
