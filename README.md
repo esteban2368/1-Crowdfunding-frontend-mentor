@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution URL Frontenmentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db/hub/sass-css-flexbox-parcel-mobile-first-async-functions-HyUda_185)
-- Live Site URL: [Advice generator app by Esteban Diaz](https://admirable-marzipan-9e2f01.netlify.app/)
+- Solution URL: [solution URL Frontenmentor](https://www.frontendmentor.io/solutions/nexjs-tailwind-and-context-api-_1MiJ6grj5)
+- Live Site URL: [Crowdfunder product page by Esteban Diaz](https://1-crowdfunding-frontend-mentor.vercel.app/)
 
 ## My process
 
